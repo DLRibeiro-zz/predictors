@@ -7,7 +7,8 @@ PredictorsAnalyzer is a Ruby script that collects, for each merge scenario, metr
 2) To install all dependencies specified on the Gemfile: bundle install.
 
 *******Configure projectsList file
-4) The projectsList  file contains all projects used to compose the study sample. So, each line of this file should specify a project repository used and should be set as follows:
+
+The projectsList  file contains all projects used to compose the study sample. So, each line of this file should specify a project repository used and should be set as follows:
 
 For instance, for a project  repository located in https://github.com/loginUser1/projectName1, the corresponding line should be set as "loginUser1/projectName1". That is, 
  - The owner of the project, in this example, loginUser1, and 
