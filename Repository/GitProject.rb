@@ -193,10 +193,11 @@ class GitProject
 					endDate = Date.parse %x(git --no-pager log -1 --pretty=format:"%cd" --date=local #{mergeCommitID}).gsub("\r","").gsub("\n","")
 					rightDelayIntegration = (endDate - startDate).to_i
 
+					leftDelayLessThanZero = false
 					if (leftDelayIntegration==0)
 						leftDelayIntegration = 1
 					end
-
+					rightDelayLessThanZero = false
 					if (rightDelayIntegration==0)
 						rightDelayIntegration = 1
 					end
@@ -207,6 +208,18 @@ class GitProject
 						deltaIntegration = rightDelayIntegration - leftDelayIntegration
 					else
 						deltaIntegration = 0
+					end
+
+					if (rightDelayIntegration <0)
+						leftDelayLessThanZero = true
+					end
+
+					if((leftDelayIntegration * rightDelayIntegration) <0)
+						if(leftDelayIntegration <0)
+							leftDelayIntegration = 1
+						else 
+							rightDelayIntegration = 1
+						end
 					end
 					
 					arithmeticMeanDelayIntegration = (Float(leftDelayIntegration + rightDelayIntegration)/2).round(2)
